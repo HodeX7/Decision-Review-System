@@ -10,12 +10,28 @@ import time
 SET_WIDTH = 650
 SET_HEIGHT = 368
 
+stream = cv2.VideoCapture('any-clip.mp4')    #Karan add any clip from your device
 
 def play(speed):
-     print(f"Speed is {speed}")
+     #for reverse/forward frame by frame
+     frame1 = stream.get(cv2.CAP_PROP_POS_FRAMES)
+     stream.set(cv2.CAP_PROP_POS_FRAMES,frame1 + speed)
+
+     grabbed, frame = stream.read()
+     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
+     frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
+     canvas.image = frame
+     canvas.create_image(0 ,0 , anchor=tkinter.NW, image=frame)
+
+     #for blinking screen
+     flag = True
+     if flag:
+          canvas.create_text(120, 25, fill = "", text = 'Decision Pending')
+     flag = not flag
 
 def pending(decision):
-     #pending
+
+     # decision pending screen
      frame = cv2.cvtColor(cv2.imread("pending.png") , cv2.COLOR_BGR2RGB ) # ---> converts image to RGB  
      frame = imutils.resize(frame,width = SET_WIDTH, height = SET_HEIGHT) # incase the image is not resized
      frame = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(frame))  # to make it tkinter usable
@@ -24,7 +40,7 @@ def pending(decision):
 
      time.sleep(2)
 
-     #decision
+     # declaration of decision
      if decision == 'out':
          decisionImg = "out.png"
      else :

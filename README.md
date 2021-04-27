@@ -15,3 +15,11 @@ To-do (Karan)
     - Try to import the video using functions.
     - Update the 4th Commit and the work done by you.
     - If any assign work for me (AKSHAR) to do in the 5th Commit
+
+Commit - 5(Akshar):
+    - Added video capturing 
+    - Completed play function
+    - Added blinking decision pending text
+
+Pending:
+    FINAL TESTING
