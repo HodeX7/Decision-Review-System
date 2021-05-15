@@ -10,7 +10,7 @@ import time
 SET_WIDTH = 650
 SET_HEIGHT = 368
 
-stream = cv2.VideoCapture('any-clip.mp4')    #Karan add any clip from your device
+stream = cv2.VideoCapture('clip.mp4')    #Karan add any clip from your device
 
 def play(speed):
      #for reverse/forward frame by frame
